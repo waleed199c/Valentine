@@ -33,8 +33,8 @@ const defaultPopup = {
 const easterEggPopup = {
   title: "OH COME ON 😩",
   note: "You said yes and still clicked no? Wild behavior 😂",
-  gifEmbed: "https://tenor.com/embed/13885231",
-  source: "https://tenor.com/view/come-on-really-seriously-gif-13885231",
+  gifEmbed: "https://tenor.com/embed/7511567",
+  source: "https://tenor.com/view/jim-carrey-ohcome-on-gif-7511567",
 };
 
 const tauntsByStage = [
@@ -199,7 +199,7 @@ function celebrateYes() {
   playYesChime();
 
   card.classList.add("celebrating");
-  setTimeout(() => card.classList.remove("celebrating"), 2800);
+  setTimeout(() => card.classList.remove("celebrating"), 5200);
 
   for (let i = 0; i < 32; i += 1) {
     setTimeout(createHeart, i * 70);
@@ -210,7 +210,8 @@ function celebrateYes() {
   yesBtn.setAttribute("aria-label", "Yes, my heart says yes");
 
   noBtn.classList.add("no-peeking");
-  noBtn.setAttribute("aria-label", "Sneaky no button peeking out");
+  noBtn.textContent = "No 👀";
+  noBtn.setAttribute("aria-label", "Sneaky no button peeking from the corner");
 
   tryAgainBtn.hidden = false;
 }
@@ -227,6 +228,7 @@ function resetState() {
   yesBtn.setAttribute("aria-label", "Yes button");
 
   noBtn.classList.remove("no-peeking");
+  noBtn.textContent = "No 🙈";
   noBtn.style.left = "75%";
   noBtn.style.top = "50%";
   noBtn.style.transform = "translate(-50%, -50%)";

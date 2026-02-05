@@ -49,18 +49,21 @@ body {
 }
 
 .card.celebrating {
-  animation: rainbowGlow 2.8s ease;
+  animation: rainbowGlow 5.2s ease;
 }
 
 @keyframes rainbowGlow {
   0% {
     box-shadow: 0 0 0 2px rgba(255, 96, 162, 0.2), 0 20px 40px rgba(255, 84, 154, 0.24);
   }
-  35% {
-    box-shadow: 0 0 0 5px rgba(255, 125, 180, 0.36), 0 0 40px rgba(210, 106, 255, 0.26), 0 24px 48px rgba(255, 130, 170, 0.3);
+  25% {
+    box-shadow: 0 0 0 6px rgba(255, 120, 198, 0.42), 0 0 48px rgba(204, 117, 255, 0.36), 0 26px 52px rgba(255, 116, 168, 0.38);
   }
-  65% {
-    box-shadow: 0 0 0 6px rgba(255, 164, 143, 0.35), 0 0 42px rgba(136, 103, 255, 0.24), 0 24px 48px rgba(255, 84, 154, 0.3);
+  50% {
+    box-shadow: 0 0 0 7px rgba(255, 169, 124, 0.4), 0 0 52px rgba(129, 177, 255, 0.34), 0 28px 55px rgba(255, 100, 174, 0.36);
+  }
+  75% {
+    box-shadow: 0 0 0 7px rgba(255, 210, 117, 0.4), 0 0 56px rgba(145, 118, 255, 0.34), 0 30px 58px rgba(255, 102, 168, 0.36);
   }
   100% {
     box-shadow: var(--shadow);
@@ -216,10 +219,11 @@ h1 {
 }
 
 .btn-no.no-peeking {
-  left: 98%;
-  top: 80%;
-  transform: translate(-35%, -50%);
-  opacity: 0.88;
+  left: 103%;
+  top: 94%;
+  transform: translate(-18%, -50%) rotate(-8deg);
+  opacity: 0.95;
+  scale: 0.92;
 }
 
 .response {

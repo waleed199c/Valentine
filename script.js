@@ -4,8 +4,6 @@ const yesBtn = document.getElementById("yesBtn");
 const response = document.getElementById("response");
 const overlay = document.getElementById("overlay");
 const closePopup = document.getElementById("closePopup");
-const title = document.getElementById("title");
-const subtitle = document.getElementById("subtitle");
 const hearts = document.getElementById("hearts");
 
 const HOVER_LIMIT = 8;
@@ -35,14 +33,18 @@ function moveNoButton() {
   noHoverCount += 1;
   if (noHoverCount >= HOVER_LIMIT) {
     response.textContent = "Okay okay... you really won't quit 😵‍💫";
-    revealPopup();
+    revealPopup({ resetHoverCount: true });
     return;
   }
 
   response.textContent = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 }
 
-function revealPopup() {
+function revealPopup({ resetHoverCount = false } = {}) {
+  if (resetHoverCount) {
+    noHoverCount = 0;
+  }
+
   overlay.classList.add("show");
   overlay.setAttribute("aria-hidden", "false");
 }
@@ -63,15 +65,14 @@ function createHeart() {
 
 function celebrateYes() {
   response.textContent = "Yaaay! Best choice ever 💘";
-  title.textContent = "You just made my heart do backflips!";
-  subtitle.textContent = "Officially the cutest couple energy unlocked ✨";
 
   for (let i = 0; i < 24; i += 1) {
     setTimeout(createHeart, i * 70);
   }
 
-  yesBtn.textContent = "My Valentine 💞";
-  yesBtn.classList.add("chosen");
+  yesBtn.textContent = "❤";
+  yesBtn.classList.add("chosen-heart");
+  yesBtn.setAttribute("aria-label", "Yes, my heart says yes");
 }
 
 noBtn.addEventListener("mouseenter", moveNoButton);
@@ -80,7 +81,7 @@ noBtn.addEventListener("touchstart", (event) => {
   moveNoButton();
 }, { passive: false });
 
-noBtn.addEventListener("click", revealPopup);
+noBtn.addEventListener("click", () => revealPopup());
 yesBtn.addEventListener("click", celebrateYes);
 
 closePopup.addEventListener("click", () => {

@@ -104,7 +104,7 @@ h1 {
   font-weight: 700;
   color: #fff;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, width 0.28s ease, height 0.28s ease;
   box-shadow: 0 8px 18px rgba(30, 12, 25, 0.2);
 }
 
@@ -118,15 +118,27 @@ h1 {
   left: 25%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 128px;
+  height: 56px;
+  display: grid;
+  place-items: center;
 }
 
 .btn-yes:hover {
   background: var(--yes-hover);
 }
 
-.btn-yes.chosen {
-  background: #ff2f84;
+.btn-yes.chosen-heart {
+  width: 74px;
+  height: 66px;
+  padding: 0;
+  border-radius: 0;
+  clip-path: path("M37 65 C 5 45, 1 21, 15 9 C 23 2, 34 5, 37 15 C 40 5, 51 2, 59 9 C 73 21, 69 45, 37 65 Z");
+  background: linear-gradient(145deg, #ff5aa5, #ff2f84);
   box-shadow: 0 12px 28px rgba(255, 47, 132, 0.4);
+  font-size: 1.4rem;
+  line-height: 1;
+  transform: translate(-50%, -50%);
 }
 
 .btn-no {

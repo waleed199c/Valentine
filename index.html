@@ -13,7 +13,11 @@
   <main class="card" id="card">
     <div class="hearts" id="hearts" aria-hidden="true"></div>
 
-    <p class="badge">💌 Valentine Mode</p>
+    <div class="top-row">
+      <p class="badge">💌 Valentine Mode</p>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="false">🔇 Sound: Off</button>
+    </div>
+
     <h1 id="title">Will you be my Valentine?</h1>
     <p class="subtitle" id="subtitle">Choose wisely... one of these buttons has commitment issues.</p>
 
@@ -22,7 +26,7 @@
       <button class="btn btn-no" id="noBtn" aria-label="No button that dodges your mouse">No 🙈</button>
     </div>
 
-    <p class="response" id="response">You know what to do 😌</p>
+    <p class="response" id="response" aria-live="polite">You know what to do 😌</p>
   </main>
 
   <section class="overlay" id="overlay" aria-hidden="true">

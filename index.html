@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="card" id="card">
+    <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+    <div class="top-row">
+      <p class="badge">💌 Valentine Mode</p>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="true">🔊 Sound: On</button>
+    </div>
+
+    <h1 id="title">Will you be my Valentine?</h1>
+    <p class="subtitle" id="subtitle">Choose wisely... one of these buttons has commitment issues.</p>
+
+    <div class="button-area" id="buttonArea">
+      <button class="btn btn-yes" id="yesBtn">Yes 💖</button>
+      <button class="btn btn-no" id="noBtn" aria-label="No button that dodges your mouse">No 🙈</button>
+    </div>
+
+    <p class="response" id="response" aria-live="polite">You know what to do 😌</p>
+    <button class="try-again" id="tryAgainBtn" hidden>Try again 🔁</button>
+  </main>
+
+  <section class="overlay" id="overlay" aria-hidden="true">
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <h2 id="popupTitle">Stop messing with me 😤</h2>
+      <iframe
+        id="noGifFrame"
+        src="https://tenor.com/embed/5459893182316367885"
+        title="Cute cat dramatic reaction GIF"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+      <p class="gif-credit">GIF source: <a id="gifCreditLink" href="https://tenor.com/view/cute-cat-hands-up-close-up-gun-gif-5459893182316367885" target="_blank" rel="noopener noreferrer">Tenor link</a></p>
+      <p class="popup-note" id="popupNote">You poked the No button way too much 😂</p>
+      <button class="btn btn-close" id="closePopup">Okay, sorry 😅</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

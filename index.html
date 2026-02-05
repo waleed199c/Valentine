@@ -15,7 +15,7 @@
 
     <div class="top-row">
       <p class="badge">💌 Valentine Mode</p>
-      <button class="sound-toggle" id="soundToggle" aria-pressed="false">🔇 Sound: Off</button>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="true">🔊 Sound: On</button>
     </div>
 
     <h1 id="title">Will you be my Valentine?</h1>
@@ -27,6 +27,7 @@
     </div>
 
     <p class="response" id="response" aria-live="polite">You know what to do 😌</p>
+    <button class="try-again" id="tryAgainBtn" hidden>Try again 🔁</button>
   </main>
 
   <section class="overlay" id="overlay" aria-hidden="true">
@@ -39,8 +40,8 @@
         loading="lazy"
         allowfullscreen
       ></iframe>
-      <p class="gif-credit">GIF source: <a href="https://tenor.com/view/cute-cat-hands-up-close-up-gun-gif-5459893182316367885" target="_blank" rel="noopener noreferrer">Tenor link</a></p>
-      <p class="popup-note">You poked the No button way too much 😂</p>
+      <p class="gif-credit">GIF source: <a id="gifCreditLink" href="https://tenor.com/view/cute-cat-hands-up-close-up-gun-gif-5459893182316367885" target="_blank" rel="noopener noreferrer">Tenor link</a></p>
+      <p class="popup-note" id="popupNote">You poked the No button way too much 😂</p>
       <button class="btn btn-close" id="closePopup">Okay, sorry 😅</button>
     </div>
   </section>

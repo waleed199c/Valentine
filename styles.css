@@ -1,7 +1,9 @@
 :root {
   --bg-1: #fff0f7;
   --bg-2: #ffe2ee;
-  --card: rgba(255, 255, 255, 0.78);
+  --bg-3: #fbe1ff;
+  --bg-4: #ffe7d2;
+  --card: rgba(255, 255, 255, 0.8);
   --text: #59213b;
   --muted: #8c5a72;
   --yes: #ff4f96;
@@ -20,8 +22,16 @@ body {
   display: grid;
   place-items: center;
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at top, var(--bg-1), var(--bg-2));
+  background: linear-gradient(130deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-4));
+  background-size: 300% 300%;
+  animation: dreamyGradient 18s ease infinite;
   color: var(--text);
+}
+
+@keyframes dreamyGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .card {
@@ -35,11 +45,26 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.35s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 .card.celebrating {
-  box-shadow: 0 0 0 4px rgba(255, 96, 162, 0.25), 0 22px 45px rgba(255, 84, 154, 0.35);
+  animation: rainbowGlow 2.8s ease;
+}
+
+@keyframes rainbowGlow {
+  0% {
+    box-shadow: 0 0 0 2px rgba(255, 96, 162, 0.2), 0 20px 40px rgba(255, 84, 154, 0.24);
+  }
+  35% {
+    box-shadow: 0 0 0 5px rgba(255, 125, 180, 0.36), 0 0 40px rgba(210, 106, 255, 0.26), 0 24px 48px rgba(255, 130, 170, 0.3);
+  }
+  65% {
+    box-shadow: 0 0 0 6px rgba(255, 164, 143, 0.35), 0 0 42px rgba(136, 103, 255, 0.24), 0 24px 48px rgba(255, 84, 154, 0.3);
+  }
+  100% {
+    box-shadow: var(--shadow);
+  }
 }
 
 .top-row {
@@ -59,7 +84,7 @@ body {
 .heart {
   position: absolute;
   bottom: -20px;
-  animation: floatUp 2.2s ease-in forwards;
+  animation: floatUp 2.4s ease-in forwards;
   opacity: 0;
 }
 
@@ -72,7 +97,7 @@ body {
     opacity: 1;
   }
   100% {
-    transform: translateY(-260px) scale(1.2);
+    transform: translateY(-280px) scale(1.25);
     opacity: 0;
   }
 }
@@ -111,12 +136,25 @@ h1 {
 
 .button-area {
   position: relative;
-  min-height: 210px;
+  min-height: 230px;
   margin-top: 1.5rem;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.66);
+  background:
+    radial-gradient(circle at 15% 25%, rgba(255, 139, 181, 0.32), transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(129, 113, 255, 0.22), transparent 38%),
+    rgba(255, 255, 255, 0.72);
   border: 1px dashed rgba(153, 92, 120, 0.33);
   overflow: hidden;
+}
+
+.button-area::before {
+  content: "✨ ✨ ✨";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.8rem;
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .btn {
@@ -127,7 +165,7 @@ h1 {
   font-weight: 700;
   color: #fff;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, width 0.28s ease, height 0.28s ease;
+  transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, width 0.28s ease, height 0.28s ease, left 0.2s ease, top 0.2s ease;
   box-shadow: 0 8px 18px rgba(30, 12, 25, 0.2);
 }
 
@@ -151,17 +189,22 @@ h1 {
   background: var(--yes-hover);
 }
 
+.btn-yes.centered {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .btn-yes.chosen-heart {
-  width: 74px;
-  height: 66px;
+  width: 80px;
+  height: 70px;
   padding: 0;
   border-radius: 0;
-  clip-path: path("M37 65 C 5 45, 1 21, 15 9 C 23 2, 34 5, 37 15 C 40 5, 51 2, 59 9 C 73 21, 69 45, 37 65 Z");
+  clip-path: path("M40 69 C 5 47, 1 21, 15 9 C 23 2, 35 5, 40 17 C 45 5, 57 2, 65 9 C 79 21, 75 47, 40 69 Z");
   background: linear-gradient(145deg, #ff5aa5, #ff2f84);
   box-shadow: 0 12px 28px rgba(255, 47, 132, 0.4);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1;
-  transform: translate(-50%, -50%);
 }
 
 .btn-no {
@@ -172,11 +215,29 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+.btn-no.no-peeking {
+  left: 98%;
+  top: 80%;
+  transform: translate(-35%, -50%);
+  opacity: 0.88;
+}
+
 .response {
-  margin: 1.1rem 0 0;
+  margin: 1.1rem 0 0.4rem;
   min-height: 1.3rem;
   color: #7f375b;
   font-weight: 600;
+}
+
+.try-again {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: #fff;
+  color: #8b1e57;
+  border: 1px solid rgba(139, 30, 87, 0.24);
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .overlay {
@@ -238,7 +299,7 @@ h1 {
 
 @media (max-width: 500px) {
   .button-area {
-    min-height: 240px;
+    min-height: 250px;
   }
 
   .btn {

@@ -33,6 +33,36 @@ body {
   box-shadow: var(--shadow);
   border: 1px solid rgba(255, 255, 255, 0.8);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  animation: floatUp 2.2s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-260px) scale(1.2);
+    opacity: 0;
+  }
 }
 
 .badge {
@@ -94,6 +124,11 @@ h1 {
   background: var(--yes-hover);
 }
 
+.btn-yes.chosen {
+  background: #ff2f84;
+  box-shadow: 0 12px 28px rgba(255, 47, 132, 0.4);
+}
+
 .btn-no {
   background: var(--no);
   position: absolute;
@@ -136,16 +171,30 @@ h1 {
 }
 
 .popup h2 {
-  margin: 0.2rem 0 1rem;
+  margin: 0.2rem 0 0.7rem;
   color: #8b1e57;
 }
 
-.popup img {
+#noGifFrame {
   width: 100%;
   border-radius: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   aspect-ratio: 1 / 1;
-  object-fit: cover;
+  border: 0;
+}
+
+.popup-note {
+  margin: 0 0 0.8rem;
+  color: #7f375b;
+}
+
+.gif-credit {
+  margin: 0 0 0.8rem;
+  font-size: 0.86rem;
+}
+
+.gif-credit a {
+  color: #8b1e57;
 }
 
 .btn-close {

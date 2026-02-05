@@ -11,9 +11,11 @@
 </head>
 <body>
   <main class="card" id="card">
+    <div class="hearts" id="hearts" aria-hidden="true"></div>
+
     <p class="badge">💌 Valentine Mode</p>
-    <h1>Will you be my Valentine?</h1>
-    <p class="subtitle">Choose wisely... one of these buttons has commitment issues.</p>
+    <h1 id="title">Will you be my Valentine?</h1>
+    <p class="subtitle" id="subtitle">Choose wisely... one of these buttons has commitment issues.</p>
 
     <div class="button-area" id="buttonArea">
       <button class="btn btn-yes" id="yesBtn">Yes 💖</button>
@@ -26,10 +28,15 @@
   <section class="overlay" id="overlay" aria-hidden="true">
     <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
       <h2 id="popupTitle">Stop messing with me 😤</h2>
-      <img
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXM4OXh2Y3N2YjRtbW1jcWl2cnVncmcwM3N6MjB0dnV2M3IxODN6NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bN9UR31HrAQ12/giphy.gif"
-        alt="Funny cat looking annoyed"
-      />
+      <iframe
+        id="noGifFrame"
+        src="https://tenor.com/embed/5459893182316367885"
+        title="Cute cat dramatic reaction GIF"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+      <p class="gif-credit">GIF source: <a href="https://tenor.com/view/cute-cat-hands-up-close-up-gun-gif-5459893182316367885" target="_blank" rel="noopener noreferrer">Tenor link</a></p>
+      <p class="popup-note">You poked the No button way too much 😂</p>
       <button class="btn btn-close" id="closePopup">Okay, sorry 😅</button>
     </div>
   </section>

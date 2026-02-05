@@ -4,6 +4,12 @@ const yesBtn = document.getElementById("yesBtn");
 const response = document.getElementById("response");
 const overlay = document.getElementById("overlay");
 const closePopup = document.getElementById("closePopup");
+const title = document.getElementById("title");
+const subtitle = document.getElementById("subtitle");
+const hearts = document.getElementById("hearts");
+
+const HOVER_LIMIT = 8;
+let noHoverCount = 0;
 
 const dodgeMessages = [
   "Nope. Too slow 😜",
@@ -26,12 +32,46 @@ function moveNoButton() {
   noBtn.style.top = `${y}px`;
   noBtn.style.transform = "none";
 
+  noHoverCount += 1;
+  if (noHoverCount >= HOVER_LIMIT) {
+    response.textContent = "Okay okay... you really won't quit 😵‍💫";
+    revealPopup();
+    return;
+  }
+
   response.textContent = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
 }
 
 function revealPopup() {
   overlay.classList.add("show");
   overlay.setAttribute("aria-hidden", "false");
+}
+
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = Math.random() > 0.5 ? "💖" : "💗";
+  heart.style.left = `${Math.random() * 100}%`;
+  heart.style.animationDelay = `${Math.random() * 0.4}s`;
+  heart.style.fontSize = `${0.9 + Math.random() * 1.2}rem`;
+  hearts.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 2400);
+}
+
+function celebrateYes() {
+  response.textContent = "Yaaay! Best choice ever 💘";
+  title.textContent = "You just made my heart do backflips!";
+  subtitle.textContent = "Officially the cutest couple energy unlocked ✨";
+
+  for (let i = 0; i < 24; i += 1) {
+    setTimeout(createHeart, i * 70);
+  }
+
+  yesBtn.textContent = "My Valentine 💞";
+  yesBtn.classList.add("chosen");
 }
 
 noBtn.addEventListener("mouseenter", moveNoButton);
@@ -41,10 +81,7 @@ noBtn.addEventListener("touchstart", (event) => {
 }, { passive: false });
 
 noBtn.addEventListener("click", revealPopup);
-
-yesBtn.addEventListener("click", () => {
-  response.textContent = "Yaaay! Best choice ever 💘";
-});
+yesBtn.addEventListener("click", celebrateYes);
 
 closePopup.addEventListener("click", () => {
   overlay.classList.remove("show");
